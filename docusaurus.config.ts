@@ -68,12 +68,6 @@ const config: Config = {
                     position: "left",
                     label: "QED"
                 },
-                // {
-                //     type: "docSidebar",
-                //     sidebarId: "openApiSidebar",
-                //     position: "left",
-                //     label: "OpenAPI"
-                // },
                 {
                     href: "https://github.com/HectorTablero/cf-page-docs",
                     position: "right",

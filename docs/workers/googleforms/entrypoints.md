@@ -44,8 +44,3 @@ async openRegistration(fixedUrl, handler, handlerData) {
 const registrationId = await GoogleFormsWorker.openRegistration("esn/recruitment", "esn-recruitment", { id: "test" });
 return Response.redirect(`https://workers.tablerus.es/googleforms/${registrationId}`);
 ```
-
----
-
-### **Related Documentation**
-- [API](./api): Details the external API endpoints for handling Google Forms.

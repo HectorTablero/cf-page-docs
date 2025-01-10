@@ -152,8 +152,3 @@ const { auth } = await authWorker.verifyAuth("oauthId12345", null, {
 - The `auth` property requires all conditions (organization, properties) to be met for a user to be authenticated.
 - The `session` property reflects whether the user has a valid OAuth session, even if they don’t meet the criteria for `auth`.
 - This flexibility allows fine-grained control over authentication requirements.
-
----
-
-## **Related Documentation**
-- [API](./api): Overview of the worker's endpoints.

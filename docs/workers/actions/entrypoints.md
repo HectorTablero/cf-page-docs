@@ -39,8 +39,3 @@ This document details the **entrypoints** in the Actions Worker, which facilitat
 const actionKey = await ActionsWorker.addNewAction("googleforms", { formId: "12345" }, 60);
 console.log("Action Key:", actionKey);
 ```
-
----
-
-## **Related Documentation**
-- [API](./api): Details the external behavior of the Actions Worker, including available endpoints and response statuses.
