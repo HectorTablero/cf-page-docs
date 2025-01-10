@@ -1,0 +1,17 @@
+openapi: 3.0.3
+info:
+  title: API
+  description: API documentation for the Actions Worker.
+  version: 1.0.0
+paths:
+  /actions/{key}:
+    get:
+      summary: Execute an action
+      description: Runs the action stored under the given key.
+      responses:
+        '200':
+          description: The action was executed successfully
+        '403':
+          description: The action key is invalid, expired, or already used
+        '500':
+          description: An internal server error occurred during the execution

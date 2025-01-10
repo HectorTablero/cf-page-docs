@@ -1,0 +1,74 @@
+---
+id: log-out-of-the-current-session
+title: "Log out of the current session"
+description: "Logs the user out by deleting the session and clearing the session cookie."
+sidebar_label: "Log out of the current session"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNlMFO4zAQhl/FmrNVCnvLrUIrhFRpEVq0h9KDcSaJheMJ9hhRRX73lR1aQlkquO0pSpzx/838MzNCjUF7M7AhBxWsqQ2COxQxoBcUWTzsRI0W2bi2HAQMwZATytVCW1T++EATPRpc3LtL5QSVi5W1O+GxNh41CyZhqTVODKpFQV7oGJh6cXe7Xtw7kDAor3pk9AGqzQhO9QgVlBiQYDLnU0S/A3lEf92IgEXgXB70Qn7PgG+iIMHjUzQea6gaZQNKCLrDXkE1Au+GrBc4pwYS0MUeqg2cwzYleeDZ338a6fKQW8aY10A1jD5DUeTvATXke8VQQfQGUtrm4DCQCxjy7xfLZX6857jLfoaoNYbQxOyHpbbFWkzqmhyj46KGL3w2WJWTGk+V5UX1g8WpafY3pZSShB/Li48Et1/wHyR0qOri/Ahr0moKPsXxvhrH9T+o5tsnuh65oxoqaJFLt3EHFZypyN3ZwQ7jGipqhkuOq8id+EP+Eb1Y3Vx/8Hl1cy1q0rFHxwVaNORL280juVMseuVUi2EasayKjs2UqXg2SlwRtRbFrxy4AAnP6MMkcr5YLpY5x4EC96oU5rUb19SWcaWmiOroPTreD+Ux7vhm+P8x8q+mznovSYjeZtTJoA3kUoGEV4u2EjoKnA/G8UEFvPM2pfx5GsS8OWoT1IOdzdSnRfjG5vgn6iPuZivqWdmY/4G8Lr4O8eVdcQJhtpXeKLb5xZuMAdVmm/ZTVoo0xa20xmEeNb98Oxuaq5+/IaW/9hQlFQ==
+sidebar_class_name: "get api-method"
+info_path: workers/auth/api/auth-worker-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Log out of the current session"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/auth/logout"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Logs the user out by deleting the session and clearing the session cookie.
+Can optionally redirect to login page or custom URL.
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"login","in":"query","description":"If set to 1, redirects to the login page","required":false,"schema":{"type":"string","enum":["1"]}},{"name":"redirect","in":"query","description":"Custom URL to redirect to after logout","required":false,"schema":{"type":"string","format":"uri"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"User successfully logged out","content":{"text/plain":{"schema":{"type":"string","example":"Logged out"}}}},"302":{"description":"Redirect to login page or custom URL","headers":{"Location":{"schema":{"type":"string","format":"uri"},"description":"Redirect URL"}}}}}
+>
+  
+</StatusCodes>
+
+
+      

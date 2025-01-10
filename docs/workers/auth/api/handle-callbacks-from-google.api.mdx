@@ -1,0 +1,74 @@
+---
+id: handle-callbacks-from-google
+title: "Handle callbacks from Google"
+description: "Handles the Google OAuth redirect by exchanging the authorization code for an access token,"
+sidebar_label: "Handle callbacks from Google"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVE1vGjEQ/SvWnFrJIiTtaW+oqtJIqRpFjXpIOAzegbXYtTfjMQpd+b9X3oUChdJIufSEAM+8j5l5HZQUDNtWrHdQwBd0ZU1BSUXq2vtFTerbJEqlmErLZETN1opeTIVuYd2if4dRKs/2J+YeyviS1NyzQqfQGApBiV+S00+OSdjSKtfFQKysm3tu+jKt0JUqiOdt10AhWO9GTw40tMjYkBAHKB47cNgQFJChQIPNxJ8j8Rr0H3Imx9SYJLKjMgsZFIIGpudomUoohCNpCKaiBqHoQNZthgqSiUFK+jd6EJR/wH+KQXyz8+7h/vYAbI51OIOmYfAHCohsIaVpLg6td4FCfn41HuePQ9Bbv7BOhdh7P481aDDeCTnpEehFLtoaM+vuDDK9YNPWdKpfSilp+DC+Osa+3yoVr8wgftBcEZb99Dq49QaH5+fwD5W/xtie1cdTjny1IeS1Ol7Ut3pzpnPa8Lk85nO4lXO0dWRSZRx2Px/L9sRIed7ditocEL55picZ9JSThoak8iUUsCDpb08qKOAia7zYOt7v/dz3KFZ+91Q/PC+J1eTu5vgW725U6U1syMkG13N/6vuVUqGoBh0uKAzKMy45scPWqJXFg2QagYYVcRhALkfj0TjvS+uDNNgbsrnXIdqUwbqeoVkGNWff7CLggGy3s/d/jcTNcPdmnzRErjP5YWSPkGn0gbMZ2lRD5YPkv7puhoEeuE4p/zzkV87W0gac1Xvp9Fdj3t1vguy9em3OniS9pPUuzFdYx/wEctK+nsvppD0Dt03vHd40f2GbAaF4nKZtaPWuDEUTY6iVvar9ztO9y7n+/B1S+gWt6pM4
+sidebar_class_name: "get api-method"
+info_path: workers/auth/api/auth-worker-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Handle callbacks from Google"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/auth/redirect"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Handles the Google OAuth redirect by exchanging the authorization code for an access token,
+retrieving user information, and storing the session.
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"code","in":"query","description":"Authorization code returned by Google","required":true,"schema":{"type":"string"}},{"name":"state","in":"query","description":"Custom redirect URL","required":false,"schema":{"type":"string","format":"uri"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Login successful","content":{"text/plain":{"schema":{"type":"string","example":"Login successful"}}}},"302":{"description":"Redirect to custom URL","headers":{"Location":{"schema":{"type":"string","format":"uri"},"description":"Custom redirect URL"}}},"400":{"description":"Missing authorization code","content":{"text/plain":{"schema":{"type":"string","example":"Missing authorization code"}}}},"401":{"description":"Authorization failure during token exchange or user info retrieval","content":{"text/plain":{"schema":{"type":"string","example":"Authorization failure"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

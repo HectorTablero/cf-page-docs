@@ -1,0 +1,74 @@
+---
+id: validate-a-google-form-registration
+title: "Validate a Google Form registration"
+description: "Validates a Google Form registration by checking the code and ensuring"
+sidebar_label: "Validate a Google Form registration"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVMFu2zAM/RWBZy1Ji+ww37piGwIMWNG12yHNQZEYW40tuZTUJjD87wPlpPHabthxPiS2xEeR7z2qA4NBk22j9Q4K+KFqa1TEIJT44n1Zo/jsqRGEpQ2RFIeJ9V7oCvXWulLECoX2BoVyRqALiXj1zvH67fVX0aioKww5bmN3aHh1IhZO18lgEKQiito2NlpXTu4cSCB8SBjiR2/2UHT50xIaKCIllKC9i+gib6m2ra3ORU3vAzfQQdAVNorf4r5FKMCv71HHQ94h0RK2uAdOZRBWElryLVK0GBjHeyd4iNwRyBdE3VQokrMPCX/nhsH9IfM/JXkcGGdsBvX54WpD610YSjqfzfjvTa0YGZLWGMIm1Xz4/K3ohcsnDWJ5GsSxIeszgOZ/BnkSuGuZvGOD8/MPr8Ovn8UUuNOIBg3Hvn+rngsnkMiT8Fon4sxm8M6JEGAeGoyVN1BA6wOr2KpYQQHTMrtz46kJ08ez6QGFIIGdcH3y0Kedatoan5U9iTGIdPzuJVi38Vk1GxkAowkI4qenLZK4uFq80vHiaiE2nkSlnKm5B+siktK8HcSTjdV4mIIU6NQ6B469I0etyzxPRw88J56AhEekMBx7NplNZlw3U9OobH+nGhzN8V/G+GUX3Wmy/otr4DA6EXdx2tbKOu40Uc2VDiZYwsgEzMwZ/xyNsJJQsWWKJXTdWgW8pbrvefkhIe2hWK44mqxas9jLVS+hQmWQoFgevXI5UPLuhovJyRMX9eri6Vcjp159+34DEtaHC6wZbEbqiS8h9QQFgASfac/Tndc6qJUrkyo5dsjJzy/b0fTs
+sidebar_class_name: "post api-method"
+info_path: workers/googleforms/api/google-forms-worker-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Validate a Google Form registration"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/googleforms/v1/validate"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Validates a Google Form registration by checking the code and ensuring 
+the URL matches the fixed URL. Includes rate limiting.
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["key","code"],"properties":{"key":{"type":"string","description":"The unique registration key"},"code":{"type":"string","description":"The validation code"}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Validation successful"},"400":{"description":"Invalid code or URL mismatch"},"404":{"description":"Invalid or expired key"},"429":{"description":"Rate limit exceeded"},"500":{"description":"An error occurred during validation"}}}
+>
+  
+</StatusCodes>
+
+
+      

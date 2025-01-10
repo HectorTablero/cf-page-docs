@@ -1,0 +1,187 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+    --ifm-color-primary: #0072ff;
+    --ifm-color-primary-dark: #0067e5;
+    --ifm-color-primary-darker: #005ecc;
+    --ifm-color-primary-darkest: #0051ab;
+    --ifm-color-primary-light: #338bff;
+    --ifm-color-primary-lighter: #66a4ff;
+    --ifm-color-primary-lightest: #99bdff;
+    --ifm-code-font-size: 95%;
+    --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+    --ifm-navbar-search-input-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" height="16px" width="16px" fill="rgb(190, 195, 201)"><path d="M6.02945,10.20327a4.17382,4.17382,0,1,1,4.17382-4.17382A4.15609,4.15609,0,0,1,6.02945,10.20327Zm9.69195,4.2199L10.8989,9.59979A5.88021,5.88021,0,0,0,12.058,6.02856,6.00467,6.00467,0,1,0,9.59979,10.8989l4.82338,4.82338a.89729.89729,0,0,0,1.29912,0,.89749.89749,0,0,0-.00087-1.29909Z" /></svg>');
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme="dark"] {
+    --ifm-color-primary: #339bff;
+    --ifm-color-primary-dark: #2e8ce5;
+    --ifm-color-primary-darker: #297dcc;
+    --ifm-color-primary-darkest: #2166ab;
+    --ifm-color-primary-light: #4faaff;
+    --ifm-color-primary-lighter: #66baff;
+    --ifm-color-primary-lightest: #80c9ff;
+    --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* Sidebar Method labels */
+/*
+.api-method > .menu__link {
+    align-items: center;
+    justify-content: start;
+}
+
+.api-method > .menu__link::before {
+    width: 50px;
+    height: 20px;
+    font-size: 12px;
+    line-height: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 0.25rem;
+    border: 1px solid;
+    margin-right: var(--ifm-spacing-horizontal);
+    text-align: center;
+    flex-shrink: 0;
+    border-color: transparent;
+    color: white;
+}
+
+.get > .menu__link::before {
+    content: "get";
+    background-color: var(--ifm-color-primary);
+}
+
+.put > .menu__link::before {
+    content: "put";
+    background-color: var(--openapi-code-blue);
+}
+
+.post > .menu__link::before {
+    content: "post";
+    background-color: var(--openapi-code-green);
+}
+
+.delete > .menu__link::before {
+    content: "del";
+    background-color: var(--openapi-code-red);
+}
+
+.patch > .menu__link::before {
+    content: "patch";
+    background-color: var(--openapi-code-orange);
+}
+*/
+
+.api-method > .menu__link,
+.schema > .menu__link {
+    align-items: center;
+    justify-content: start;
+}
+
+.api-method > .menu__link::before,
+.schema > .menu__link::before {
+    width: 55px;
+    height: 20px;
+    font-size: 12px;
+    line-height: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 0.25rem;
+    border: 1px solid;
+    border-inline-start-width: 5px;
+    margin-right: var(--ifm-spacing-horizontal);
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.get > .menu__link::before {
+    content: "get";
+    background-color: var(--ifm-color-info-contrast-background);
+    color: var(--ifm-color-info-contrast-foreground);
+    border-color: var(--ifm-color-info-dark);
+}
+
+.post > .menu__link::before {
+    content: "post";
+    background-color: var(--ifm-color-success-contrast-background);
+    color: var(--ifm-color-success-contrast-foreground);
+    border-color: var(--ifm-color-success-dark);
+}
+
+.delete > .menu__link::before {
+    content: "del";
+    background-color: var(--ifm-color-danger-contrast-background);
+    color: var(--ifm-color-danger-contrast-foreground);
+    border-color: var(--ifm-color-danger-dark);
+}
+
+.put > .menu__link::before {
+    content: "put";
+    background-color: var(--ifm-color-warning-contrast-background);
+    color: var(--ifm-color-warning-contrast-foreground);
+    border-color: var(--ifm-color-warning-dark);
+}
+
+.patch > .menu__link::before {
+    content: "patch";
+    background-color: var(--ifm-color-success-contrast-background);
+    color: var(--ifm-color-success-contrast-foreground);
+    border-color: var(--ifm-color-success-dark);
+}
+
+.head > .menu__link::before {
+    content: "head";
+    background-color: var(--ifm-color-secondary-contrast-background);
+    color: var(--ifm-color-secondary-contrast-foreground);
+    border-color: var(--ifm-color-secondary-dark);
+}
+
+.event > .menu__link::before {
+    content: "event";
+    background-color: var(--ifm-color-secondary-contrast-background);
+    color: var(--ifm-color-secondary-contrast-foreground);
+    border-color: var(--ifm-color-secondary-dark);
+}
+
+.schema > .menu__link::before {
+    content: "schema";
+    background-color: var(--ifm-color-secondary-contrast-background);
+    color: var(--ifm-color-secondary-contrast-foreground);
+    border-color: var(--ifm-color-secondary-dark);
+}
+
+/* Custom Styles */
+.header-github-link:before {
+    content: "";
+    background-color: currentColor;
+    width: 24px;
+    height: 24px;
+    transition: background-color var(--ifm-transition-fast) var(--ifm-transition-timing-default);
+    display: flex;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E");
+}
+
+.navbar__search-input {
+    transition: box-shadow var(--ifm-transition-fast) var(--ifm-transition-timing-default);
+}
+
+.navbar__search-input:focus,
+.navbar__search-input:hover {
+    outline: none;
+    box-shadow: inset 0 0 0 2px var(--ifm-navbar-link-hover-color);
+}

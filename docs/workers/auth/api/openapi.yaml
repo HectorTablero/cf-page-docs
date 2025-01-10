@@ -1,0 +1,124 @@
+openapi: 3.0.3
+info:
+  title: Auth Worker API
+  description: API documentation for the Auth Worker that manages user authentication via Google OAuth.
+  version: 1.0.0
+paths:
+  /auth/login:
+    get:
+      summary: Redirect to Google's OAuth page
+      description: |
+        Redirects the user to the Google OAuth login page or verifies an existing session.
+        If a valid session cookie exists, the user is either redirected to a custom URL or
+        informed they are already logged in.
+      parameters:
+        - name: redirect
+          in: query
+          description: Custom URL to redirect to after login
+          required: false
+          schema:
+            type: string
+            format: uri
+      responses:
+        '200':
+          description: User already has an active session
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "Already logged in"
+        '302':
+          description: Redirect to Google OAuth consent screen
+          headers:
+            Location:
+              schema:
+                type: string
+                format: uri
+              description: Google OAuth consent screen URL
+  /auth/redirect:
+    get:
+      summary: Handle callbacks from Google
+      description: |
+        Handles the Google OAuth redirect by exchanging the authorization code for an access token,
+        retrieving user information, and storing the session.
+      parameters:
+        - name: code
+          in: query
+          description: Authorization code returned by Google
+          required: true
+          schema:
+            type: string
+        - name: state
+          in: query
+          description: Custom redirect URL
+          required: false
+          schema:
+            type: string
+            format: uri
+      responses:
+        '200':
+          description: Login successful
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "Login successful"
+        '302':
+          description: Redirect to custom URL
+          headers:
+            Location:
+              schema:
+                type: string
+                format: uri
+              description: Custom redirect URL
+        '400':
+          description: Missing authorization code
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "Missing authorization code"
+        '401':
+          description: Authorization failure during token exchange or user info retrieval
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "Authorization failure"
+  /auth/logout:
+    get:
+      summary: Log out of the current session
+      description: |
+        Logs the user out by deleting the session and clearing the session cookie.
+        Can optionally redirect to login page or custom URL.
+      parameters:
+        - name: login
+          in: query
+          description: If set to 1, redirects to the login page
+          required: false
+          schema:
+            type: string
+            enum: ['1']
+        - name: redirect
+          in: query
+          description: Custom URL to redirect to after logout
+          required: false
+          schema:
+            type: string
+            format: uri
+      responses:
+        '200':
+          description: User successfully logged out
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "Logged out"
+        '302':
+          description: Redirect to login page or custom URL
+          headers:
+            Location:
+              schema:
+                type: string
+                format: uri
+              description: Redirect URL

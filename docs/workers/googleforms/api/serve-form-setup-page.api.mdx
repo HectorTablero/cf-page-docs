@@ -1,0 +1,72 @@
+---
+id: serve-form-setup-page
+title: "Serve form setup page"
+description: "Serves an HTML page that guides users through connecting a Google Form"
+sidebar_label: "Serve form setup page"
+hide_title: true
+hide_table_of_contents: true
+api: eJytU82K2zAQfpVhTl0QSbbsybeFtttAC8s2pYeQg2KNbbG25MyM0gbjdy9y0uLNLj31ZFmS5/v1gI6kZN+rjwEL/EZ8JAEb4PPm6xfobU2gjVWok3ckkIRYQBuOqW6gjCFQqT7UYOEhxrol+BS5Q4O9ZduREgsW2wGD7QgLZKq9KNuMtnZo0GfQ3mqDBpkOyTM5LJQTmStmm4YgBX9IBPMpsP6ABqVsqLNYDKinPgOJsg81juMuz5U+BiHJ5+9Xq/x4OXvSKqSpPytm0sSBHEgqSxKpUtuecDR4t7p7/fUTSUxcEoSoUMUUHI6jwY60iQ4LrEknQ7TBApf1ZFMVuZPl8NKPcTKkipMOr20WMnNV4EfkZ2K4f1zjtT33j2uoIkNjg2tzID4osS3zscBPr808IDFAwe6ni3MOBo629e6ytsHBH/P+Dl6gwSOxnGFvF6vFKjvTR9HOhkz9kvVUpcypm1l7zXvAMgaloP+ze5cOKP3SZd9aHzLBxG2GO8ewxVkMaLC4KubOYBNF88Vh2Fuh79yOY94+JOITFtudwaNlb/c5pe2AzkteOywq28p1e+cy3z1den4D/+z0myoumzaccgy2TfkNDT7T6fXvNe7mNXz4uMFx/A2KD1+h
+sidebar_class_name: "get api-method"
+info_path: workers/googleforms/api/google-forms-worker-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Serve form setup page"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/googleforms/{registrationId}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Serves an HTML page that guides users through connecting a Google Form
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"registrationId","in":"path","required":true,"description":"The unique registration ID","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"HTML setup page returned successfully"},"404":{"description":"Resource not found"}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,75 @@
+---
+id: redirect-to-googles-o-auth-page
+title: "Redirect to Google's OAuth page"
+description: "Redirects the user to the Google OAuth login page or verifies an existing session."
+sidebar_label: "Redirect to Google's OAuth page"
+hide_title: true
+hide_table_of_contents: true
+api: eJzdVE1r20AQ/SvDXHpZHDe96WZKCYFAQ2joIfFhIo2lJdKuMjsSMUL/vYxkN7LThp57slnt7PuYNzNgwSkX36qPATO848IL55pAK4YusYDG6f9VjGXN8H3TaQV1LH2AlkqGKNCz+J3nBBSAX31SH0pInJKPYfUYrndA0FPti+Mh5DE+e54vJ/eG5ROw14oF5ECECyNAkHdJYwP3dzcQ5TH4sIvS2MeK90DCQLUwFXujVnIB3pDRYUtCDStLwuxhwEANY4bH19GhN9kvHcse3ZkZX98wNf5mNPHZKcvsAjoUfum8cIHZjurEDlNecUOYDaj71vCSig8lOjTWpJhhJx7HcWvFqY0hcbLrl+u1/ZzSuDdnjvIqmmymXH3PRz/RYR6DctAJk1/1oq3JlA0fcOFXatrajjbn3uE4jqPDL+vL93TuFj6chCI3GUEh5cJsnCqmYjJ+wJuY01z/EaNTd87b8QGY9ejAuWGtYoEZlqxT/7XCDC+o0+ri2DBLz4TvddZvL/6M8swCm9vrd0HY3F5DEfOu4aCTDNhFmVK7rNSKFBoKVHKa42ygHNTP2qH3dOLYCh32LGkG+bxar9amuo1JG5qsOsT1veWf0sEHm8FzvsNbGv6/gT5kZhHy0WEntcmem/2A5js6nNu9dVjFpHY+DE+U+F7qcbTjeeptLRQ+0VO9mOC/+vmvO+GPNJ95f7p8eqo7u4a2CXoSbywwe9iOx+mZ6M11mzzndlm1fHy7SP7Vtx84jr8A3+0JlA==
+sidebar_class_name: "get api-method"
+info_path: workers/auth/api/auth-worker-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Redirect to Google's OAuth page"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/auth/login"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Redirects the user to the Google OAuth login page or verifies an existing session.
+If a valid session cookie exists, the user is either redirected to a custom URL or
+informed they are already logged in.
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"redirect","in":"query","description":"Custom URL to redirect to after login","required":false,"schema":{"type":"string","format":"uri"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"User already has an active session","content":{"text/plain":{"schema":{"type":"string","example":"Already logged in"}}}},"302":{"description":"Redirect to Google OAuth consent screen","headers":{"Location":{"schema":{"type":"string","format":"uri"},"description":"Google OAuth consent screen URL"}}}}}
+>
+  
+</StatusCodes>
+
+
+      

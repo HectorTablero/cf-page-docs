@@ -1,0 +1,74 @@
+---
+id: handle-form-submissions
+title: "Handle form submissions"
+description: "Handles form submissions by calling the registered handler with the form data."
+sidebar_label: "Handle form submissions"
+hide_title: true
+hide_table_of_contents: true
+api: eJztWN1vGjkQ/1csP12lDVmi5NruGyVcsrq0ICDX6giKzHpg3Xjtre0NQWj/99N4N3w3baU+HNfjBfDY8/GbD3tmSTnYxIjcCa1oRK+Z4hIsmWqTEVtMMmGt0MqSyYIkTEqhZsSlQAzMhHVggJPUHzFkLlzqaf4sZ4417tRfTArOHFhi4EsB1hFtxEwowhQnGXNJCpawPLcDr0TMG3eKBrTe/E7zBY2W/q8wwGnkTAEBTbRyoBySWJ5LkTBU//SzRRuW1CYpZAx/uUUONKJ68hkSV/OtGI2oAZtrZcHScUBzo3MwToCt5CGJg3KdjAm5wck6I9SMBjuw+W1ET739ORirFZmnmlhQrsarEuZPTlkhHY3oHb2jtAw2NFkLYsawBQ2ocJD5da2gO6XR6GWjBKcBfWSygH2rBN/gL5SDGZg9S4YpkPjy2RTvBaEVcamwKyOIgSkYUAlYVL8S94Lq29iVuyIHICFxwIn2Kz74vPSskE7kEk6SVItkrQ0ty4A64SRyfX97M4x7N5379nU3bndoGfxCCCUpJA8T/XQYmvZ1p/3nu+6nXwQTozMvXgrrDgNyEw+GRwHGSjHGucDTTPa2FPkGOC2SsRw1MHpOJJuAtMRhOaoxS7QsMlVTtiC66seX/0P0IkTPaXV/NFitbi28mhlePU5ksC9JZED8WZIb/Sg48FWlOZhPw/j9cRTcfQDwUbIn6ZK5HwPgsjU8ZgBODoaBRwHfZ+5H4wHhOJqY+Brr1cVSWe65ArEJk7Bl7KDduvmPWGqYw4d9dW7Txn5rGH+4Ogojv/Iybyk7B7OOX2ZJLplQxMGT2y5mnU/H8Tj4KZbe91r91lW/1bs+LpvX9aswvuvbL181Ybdy/RYPuuTN72GTVDxebZeuW4z17gdajsvqs9OXnYUhfm3L6j9rXzXBnNgiScDaaSHlAu04D88PntKFSYAo7chUF4rj1otDAlqKgDHaEJ0khcF2e54KWctbN+N1c4lKZ+BSzWlEc23RkzlzKY3o6UzrmQQ03Z4+Nk83GlJsm/vrhrvzxLJcwsE+uGpZt5AZVUEQrnw2enbWGAPr59CW5fetrV97e5Sz8Oz8JHx9cvb2ZeqweRFdNKOzN43wdfPvA3vD71p6QZNvU8ZlQIWaap8Azw9z7z/yBzqQfNTmAQxp9eL9MtCL/SW9ihDMSsOSqknyQ5pNVgEBxSZ+YzXTqZInwOzByY3/jY8BsxXqQs0aWBXA2EpssxE2QgxjDLuM+TmMYhmsZkp7I6VdzZfrsc6/ZQxVFx8soKe+lqKBhfEDoSqvRnQjrxCQ5kZ2YLlMMQujEV0uJ8zCrZFlictfCjALGo3G6Hwj2AR9PEK/p8A4GJ9XD7DAdqNC5WSIyqxjZW/wVY43kr/XHQxpQCf1AC3THM8YNkf12JxGmMV15+wzHdeWVDI1K9gM91Y88fMPgLjs9g==
+sidebar_class_name: "post api-method"
+info_path: workers/googleforms/api/google-forms-worker-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Handle form submissions"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/googleforms/v1/response"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Handles form submissions by calling the registered handler with the form data.
+Validates request origin and matches appsScriptId.
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["responses"],"properties":{"respondentEmail":{"type":"string","description":"Email of the person who sent the response","default":"\"\""},"responses":{"type":"array","items":{"oneOf":[{"type":"object","required":["id","value"],"properties":{"id":{"type":"integer","description":"The ID of the question this response references"},"value":{"type":"array","items":{"type":"string"},"description":"Selected options for the multiple-choice question"}},"title":"MULTIPLE_CHOICE"},{"type":"object","required":["id","value"],"properties":{"id":{"type":"integer","description":"The ID of the question this response references"},"value":{"type":"array","items":{"type":"string"},"description":"Selected options for the checkbox question"}},"title":"CHECKBOX"},{"type":"object","required":["id","value"],"properties":{"id":{"type":"integer","description":"The ID of the question this response references"},"value":{"type":"array","items":{"type":"string"},"description":"Selected options from the list question"}},"title":"LIST"},{"type":"object","required":["id","value"],"properties":{"id":{"type":"integer","description":"The ID of the question this response references"},"value":{"type":"object","additionalProperties":{"type":"string"},"description":"A map of row labels to selected column labels"}},"title":"GRID"},{"type":"object","required":["id","value"],"properties":{"id":{"type":"integer","description":"The ID of the question this response references"},"value":{"type":"object","additionalProperties":{"type":"string"},"description":"A map of row labels to selected column labels"}},"title":"CHECKBOX_GRID"},{"type":"object","required":["id","value"],"properties":{"id":{"type":"integer","description":"The ID of the question this response references"},"value":{"type":"string","format":"time","description":"Time value provided for the question"}},"title":"TIME"},{"type":"object","required":["id","value"],"properties":{"id":{"type":"integer","description":"The ID of the question this response references"},"value":{"type":"string","format":"date","description":"Date value provided for the question"}},"title":"DATE"},{"type":"object","required":["id","value"],"properties":{"id":{"type":"integer","description":"The ID of the question this response references"},"value":{"type":"string","format":"date-time","description":"Date and time value provided for the question"}},"title":"DATETIME"},{"type":"object","required":["id","value"],"properties":{"id":{"type":"integer","description":"The ID of the question this response references"},"value":{"type":"integer","description":"Selected value on the scale"}},"title":"SCALE"},{"type":"object","required":["id","value"],"properties":{"id":{"type":"integer","description":"The ID of the question this response references"},"value":{"type":"integer","description":"Selected rating value"}},"title":"RATING"},{"type":"object","required":["id","value"],"properties":{"id":{"type":"integer","description":"The ID of the question this response references"},"value":{"type":"string","description":"Answer provided as plain text"}},"title":"TEXT"},{"type":"object","required":["id","value"],"properties":{"id":{"type":"integer","description":"The ID of the question this response references"},"value":{"type":"string","description":"Answer provided as plain text"}},"title":"TEXT_PARAGRAPH"},{"type":"object","required":["id","value"],"properties":{"id":{"type":"integer","description":"The ID of the question this response references"},"value":{"type":"string","format":"duration","description":"Duration value provided (ISO 8601 format)"}},"title":"DURATION"}]}}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Response handled successfully"},"404":{"description":"Resource not found"},"500":{"description":"An error occurred while handling the response"}}}
+>
+  
+</StatusCodes>
+
+
+      
