@@ -1,0 +1,28 @@
+html[data-theme="dark"] .CodeMirror {
+    --background: #1e1e1e;
+    --text: #ffffff;
+    --box: #333333;
+}
+
+.evaluate-query h3 {
+    margin: 10px 0;
+}
+
+.CodeMirror {
+    --background: #ffffff;
+    --text: #000000;
+    --box: #f0f0f0;
+    background-color: var(--box);
+    color: var(--text);
+    border: 1px solid var(--text);
+    height: 150px;
+    border-radius: 4px;
+}
+
+.CodeMirror-lines {
+    font-size: 14px;
+}
+
+.CodeMirror-gutters {
+    background-color: var(--box);
+}

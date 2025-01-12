@@ -1,101 +1,97 @@
 ---
-title: Email Worker Entrypoint Documentation
-description: Documentation for the entrypoint functions available for use in a Cloudflare Worker, integrated with Brevo.
+title: Email Worker Entrypoint Documentation  
+description: Documentation for the entrypoints of the Email Worker.  
 ---
 
-# Cloudflare Email Worker Entrypoint
+# Email Worker Entrypoints  
 
-This document details the **entrypoint functions** accessible to users when working with this Cloudflare Worker. Functions outside the entrypoint are documented separately and should only be used for internal purposes or by developers maintaining the system.
+The **Email Worker** handles email-related operations such as sending emails, validating email data, and managing email templates. This worker interacts with external APIs for email delivery and provides extensible functionality.  
 
 ---
 
-## **User-Accessible Entrypoint Functions**
+## **EmailWorker Entrypoints**  
 
-### **`EmailWorker.sendEmail`**
-Sends an email using provided parameters, supporting dynamic content retrieval from a KV store.
+### **`sendEmail(sender, to, replyTo, subject, htmlContent, textContent)`**  
 
-#### **Parameters**:
-- **`sender`**: *(Required)* Object `{ name: string, email: string }`
-  - Example: `{ name: "Support", email: "support@example.com" }`
-- **`to`**: *(Required)* Array of recipients, each as `{ name: string, email: string }`
-  - Example: `[{ name: "Customer", email: "customer@example.com" }]`
-- **`replyTo`**: *(Optional)* Object `{ name: string, email: string }`. Defaults to `noreply`.
-- **`subject`**: *(Required)* String representing the email subject.
-- **`htmlContent`**: *(Optional)* HTML content for the email. Can be:
-  - A string.
-  - An object `{ key: string }` to retrieve content from KV storage.
-- **`textContent`**: *(Optional)* Plain text content for the email. Can be:
-  - A string.
-  - An object `{ key: string }` to retrieve content from KV storage.
+Sends an email with the provided details. This method supports both HTML and plain text content, offering flexibility for email formatting.  
 
-#### **Returns**:
-An object with possible errors and warnings.
+#### **Parameters**:  
+- `sender`: An object containing the sender's name and email.
+- `to`: An array of recipient objects, each containing name and email. Supports a single recipient as well.
+- `replyTo`: An object specifying the reply-to email address. Defaults to a `noreply` address if not provided.
+- `subject`: The subject of the email as a string.
+- `htmlContent`: Optional HTML content for the email. Can be a string or a reference to a key in a KV store.
+- `textContent`: Optional plain text content for the email. Can be a string or a reference to a key in a KV store.
 
-#### **Example Use Case**:
-Send an email with HTML content retrieved from KV storage:
-```javascript
-await emailWorker.sendEmail(
-  { name: "Admin", email: "admin@example.com" },
-  [{ name: "User", email: "user@example.com" }],
-  null,
-  "Important Notification",
-  { key: "htmlContentKey" } // Retrieves content from KV storage
-);
+#### **Usage Example**:
+
+```javascript showLineNumbers
+const sender = { name: "John Doe", email: "john.doe@example.com" };
+const recipients = [{ name: "Jane Smith", email: "jane.smith@example.com" }];
+const subject = "Welcome to Our Service!";
+const htmlContent = "<p>Thank you for joining us, Jane!</p>";
+
+const response = await EmailWorker.sendEmail(sender, recipients, null, subject, htmlContent);
+if (response.errors.length > 0) {
+    console.error("Failed to send email:", response.errors);
+} else {
+    console.log("Email sent successfully!");
+}
 ```
 
 ---
 
-### **`EmailWorker.sendEmailFromTemplate`**
-Sends an email using a predefined Brevo template, with optional dynamic parameters.
+### **`sendEmailFromTemplate(templateId, sender, to, replyTo, subject, params)`**  
 
-#### **Parameters**:
-- **`templateId`**: *(Required)* Integer representing the template ID in Brevo.
-- **`sender`**: *(Required)* Object `{ name: string, email: string }`
-  - Example: `{ name: "Support", email: "support@example.com" }`
-- **`to`**: *(Required)* Array of recipients, each as `{ name: string, email: string }`
-  - Example: `[{ name: "Customer", email: "customer@example.com" }]`
-- **`replyTo`**: *(Optional)* Object `{ name: string, email: string }`. Defaults to `noreply`.
-- **`subject`**: *(Required)* String representing the email subject.
-- **`params`**: *(Optional)* Object containing dynamic parameters for the template.
-  - Keys like `htmlContent` can also be an object `{ key: string }`.
+Sends an email based on a specific template. Parameters allow for customization of the template's content.  
 
-#### **Returns**:
-An object with possible errors and warnings.
+#### **Parameters**:  
+- `templateId`: The ID of the email template to use.  
+- `sender`: An object containing the sender's name and email.  
+- `to`: An array of recipient objects, each containing name and email. Supports a single recipient as well.  
+- `replyTo`: An object specifying the reply-to email address. Defaults to a `noreply` address if not provided.  
+- `subject`: The subject of the email as a string.  
+- `params`: Optional template-specific parameters for customizing the email content.  
 
-#### **Example Use Case**:
-Send an email using a template with dynamic content:
-```javascript
-await emailWorker.sendEmailFromTemplate(
-  1,
-  { name: "Support", email: "support@example.com" },
-  [{ name: "Customer", email: "customer@example.com" }],
-  null,
-  "Welcome!",
-  { htmlContent: { key: "welcomeHtmlKey" }, title: "Welcome to Our Service" }
-);
+#### **Template-Specific Details**:
+- **Template #1**:
+  Requires `params` to include:
+  - `htmlContent`: HTML content as a string.
+  - `title`: A title for the email as a string.
+
+#### **Usage Example**:  
+
+```javascript showLineNumbers
+const sender = { name: "John Doe", email: "john.doe@example.com" };
+const recipients = [{ name: "Jane Smith", email: "jane.smith@example.com" }];
+const subject = "Special Offer!";
+const params = { htmlContent: "<p>Exclusive deal just for you!</p>", title: "Exclusive Offer" };
+
+const response = await EmailWorker.sendEmailFromTemplate(1, sender, recipients, null, subject, params);
+if (response.errors.length > 0) {
+    console.error("Failed to send email from template:", response.errors);
+} else {
+    console.log("Email sent successfully!");
+}
 ```
 
 ---
 
-## **Internal and Supporting Functions**
+## **Validation and Error Handling**  
 
-The following functions are intended for internal use. If you're maintaining or extending the Worker, refer to these descriptions in the supplementary file.
+Both entrypoints perform extensive validation on input data. If validation fails, an array of errors is returned, each containing:  
+- `field`: The parameter or field that failed validation.  
+- `message`: A descriptive message explaining the error.  
 
-### Internal Functions (Brief Overview)
-- **`getContentFromKey`**: Fetches and deletes content from a KV store.
-- **`validateEmail`**: Validates email address format.
-- **`validateData`**: Ensures all parameters meet required formats.
-- **`getBaseEmail`**: Constructs a base email object.
-- **`sendEmailWithData`**: Handles the API call to Brevo.
+#### **Common Validation Errors**:  
+- Missing or invalid `sender`, `to`, or `replyTo`.  
+- Empty or improperly formatted `subject`.  
+- Missing or invalid `htmlContent` or `textContent` (for `sendEmail`).  
+- Missing or improperly formatted `params` for templates.  
 
-For more details, refer to the [Internal Functions Documentation](./functions).
+--- 
 
----
+## Notes
 
-## **Brevo Integration Notes**
-This Worker uses the [Brevo SMTP API](https://developers.brevo.com/reference/sendtransacemail). To set it up:
-1. Obtain your Brevo API Key.
-2. Set it as the `BREVO_API_KEY` environment variable.
-3. Ensure email content complies with Brevo's guidelines.
-
-For further assistance, see [Brevo API Documentation](https://developers.brevo.com/).
+**API Integration**:  
+ - Emails are sent via the [Brevo API](https://developers.brevo.com/), requiring a valid API key configured in the worker environment (`BREVO_API_KEY`).

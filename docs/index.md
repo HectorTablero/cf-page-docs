@@ -1,7 +1,7 @@
-# Introduction
+# Projects
 
-## [Workers](./workers)
+### [Workers](./workers)
 
-## [ESN Recruitment](./esn-recruitment)
+### [ESN Recruitment](./esn-recruitment)
 
-## [QED](./qed)
+### [QED](./qed)

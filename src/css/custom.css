@@ -23,6 +23,17 @@
     --ifm-code-font-size: 95%;
     --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
     --ifm-navbar-search-input-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" height="16px" width="16px" fill="rgb(190, 195, 201)"><path d="M6.02945,10.20327a4.17382,4.17382,0,1,1,4.17382-4.17382A4.15609,4.15609,0,0,1,6.02945,10.20327Zm9.69195,4.2199L10.8989,9.59979A5.88021,5.88021,0,0,0,12.058,6.02856,6.00467,6.00467,0,1,0,9.59979,10.8989l4.82338,4.82338a.89729.89729,0,0,0,1.29912,0,.89749.89749,0,0,0-.00087-1.29909Z" /></svg>');
+    --interactive-component-background-color: var(--ifm-color-emphasis-300);
+    --interactive-component-padding: 1rem;
+
+    --scrollbar-percentage-color: rgba(40, 40, 40, 0.75);
+    --scrollbar-track-color: rgba(125, 125, 125, 0.5);
+    --scrollbar-thumb-color: rgba(75, 75, 75, 0.5);
+    --scrollbar-thumb-hover-color: rgba(40, 40, 40, 0.5);
+    --scrollbar-percentage-color-dark: rgba(200, 200, 200, 0.75);
+    --scrollbar-track-color-dark: rgba(75, 75, 75, 0.5);
+    --scrollbar-thumb-color-dark: rgba(150, 150, 150, 0.5);
+    --scrollbar-thumb-hover-color-dark: rgba(200, 200, 200, 0.5);
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -35,6 +46,12 @@
     --ifm-color-primary-lighter: #66baff;
     --ifm-color-primary-lightest: #80c9ff;
     --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+    --interactive-component-background-color: var(--ifm-color-emphasis-300);
+
+    --scrollbar-percentage-color: var(--scrollbar-percentage-color-dark);
+    --scrollbar-track-color: var(--scrollbar-track-color-dark);
+    --scrollbar-thumb-color: var(--scrollbar-thumb-color-dark);
+    --scrollbar-thumb-hover-color: var(--scrollbar-thumb-hover-color-dark);
 }
 
 /* Sidebar Method labels */
@@ -184,4 +201,86 @@
 .navbar__search-input:hover {
     outline: none;
     box-shadow: inset 0 0 0 2px var(--ifm-navbar-link-hover-color);
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track-color);
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb-color);
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover-color);
+}
+
+.CodeMirror-vscrollbar {
+    --scrollbar-percentage-color: var(--scrollbar-percentage-color-dark);
+    --scrollbar-track-color: var(--scrollbar-track-color-dark);
+    --scrollbar-thumb-color: var(--scrollbar-thumb-color-dark);
+    --scrollbar-thumb-hover-color: var(--scrollbar-thumb-hover-color-dark);
+}
+
+.thin-scrollbar {
+    scrollbar-width: initial;
+}
+
+/* Slider styles */
+input[type="range"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    max-width: 200px;
+    height: 8px;
+    border-radius: 10px;
+    background-color: var(--ifm-color-emphasis-400);
+}
+
+input[type="range"]::after {
+    background-color: var(--ifm-color-primary);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--ifm-color-primary);
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    background: var(--ifm-color-primary-dark);
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--ifm-color-primary);
+    cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+    background: var(--ifm-color-primary-dark);
+}
+
+input[type="range"]::-ms-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--ifm-color-primary);
+    cursor: pointer;
+}
+
+input[type="range"]::-ms-thumb:hover {
+    background: var(--ifm-color-primary-dark);
 }

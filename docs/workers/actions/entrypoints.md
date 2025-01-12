@@ -1,41 +1,42 @@
 ---
-title: Actions Worker Entrypoint Documentation
-description: Documentation for the entrypoints of the Cloudflare Worker.
+title: Actions Worker Documentation
+description: Documentation for the entrypoints of the Actions Worker.
 ---
 
-# Actions Worker Entrypoints
+# Actions Worker Entrypoint
 
-This document details the **entrypoints** in the Actions Worker, which facilitate the interaction between the API and internal functions. Entrypoints are responsible for handling incoming requests, routing them appropriately, and providing responses.
+The **Actions Worker** provides an interface for scheduling and executing specific actions via handlers. Actions are stored in a KV namespace and processed when accessed.
 
 ---
 
-## **User-Accessible Entrypoint Functions**
+## **ActionsWorker Entrypoint**
 
-### **`ActionsWorker.addNewAction(handlername, params, ttl)`**:
-   - Creates a new action and stores it in the KV store.
-   - Generates a unique key for accessing the action.
+### **`addNewAction(handlername, params, ttl = null)`**
 
-   **Parameters**:
-   - `handlername`: Name of the handler (e.g., `"googleforms"`).
-   - `params`: Parameters for the handler, serialized to JSON.
-   - `ttl`: *(Optional)* Time-to-live in minutes for the action.
+Creates a new action in the KV namespace for later execution.
 
-   **Returns**:
-   - The unique key for the action.
+#### **Parameters**:
+- `handlername` *(string, required)*:
+  The name of the handler responsible for processing the action.
+  
+- `params` *(object, required)*:
+  An object containing parameters to be passed to the handler when the action is executed. These parameters must be serializable to JSON.
+  
+- `ttl` *(number, optional)*:
+  Time-to-live for the action in minutes. If provided, the action will expire after the specified duration. If omitted, the action persists indefinitely until manually deleted.
 
-   **Code Reference**:
-   ```javascript title="class ActionsWorker"
-   async addNewAction(handlername, params, ttl = null) {
-     const key = await this.env.UTILS.generateID(50);
-     const options = {};
-     if (ttl) options.expirationTtl = ttl * 60;
-     await this.env.ACTIONS_KV.put(key, JSON.stringify({ v: 1, handlername, params }), options);
-     return key;
-   }
-   ```
+#### **Returns**:
+- A `key` *(string)* that uniquely identifies the created action in the KV namespace. This key can be used to trigger the action.
 
 #### **Usage Example**:
-```javascript
-const actionKey = await ActionsWorker.addNewAction("googleforms", { formId: "12345" }, 60);
-console.log("Action Key:", actionKey);
+
+```javascript showLineNumbers
+const worker = new ActionsWorker();
+const handlername = "esn-recruitment";
+const params = { action: "allowChange", newData: { ... } };
+const ttl = 60; // Action expires in 60 minutes
+
+const actionKey = await worker.addNewAction(handlername, params, ttl);
+
+console.log(`The action can be executed from: https://workers.tablerus.es/actions/${actionKey}`);
 ```

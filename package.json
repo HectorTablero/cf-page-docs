@@ -20,14 +20,17 @@
     "dependencies": {
         "@docusaurus/core": "^3.6.3",
         "@docusaurus/preset-classic": "^3.6.3",
+        "@docusaurus/theme-live-codeblock": "^3.7.0",
         "@easyops-cn/docusaurus-search-local": "^0.47.0",
         "@mdx-js/react": "^3.1.0",
         "clsx": "^2.0.0",
+        "codemirror": "^5.65.18",
         "docusaurus-plugin-openapi-docs": "4.3.1",
         "docusaurus-theme-openapi-docs": "4.3.1",
         "node-gyp": "^11.0.0",
         "prism-react-renderer": "^2.3.0",
         "react": "^18.0.0",
+        "react-codemirror2": "^8.0.0",
         "react-dom": "^18.0.0"
     },
     "browserslist": {

@@ -11,10 +11,13 @@ const config: Config = {
     title: "tablerus.es - Docs",
     tagline: "Dinosaurs are cool",
     favicon: "img/favicon.svg",
-    url: "https://docs.tablerus.es",
+    url: "https://hectortablero.github.io",
     baseUrl: "/",
     onBrokenLinks: "throw",
     onBrokenMarkdownLinks: "warn",
+
+    organizationName: "HectorTablero",
+    projectName: "cf-page-docs",
 
     i18n: {
         defaultLocale: "en",
@@ -135,6 +138,7 @@ const config: Config = {
     ],
 
     themes: [
+        "@docusaurus/theme-live-codeblock",
         "docusaurus-theme-openapi-docs",
         [
             "@easyops-cn/docusaurus-search-local",

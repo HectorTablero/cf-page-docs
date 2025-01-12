@@ -1,46 +1,51 @@
 ---
 title: Google Forms Worker Entrypoint Documentation
-description: Documentation for the entrypoints of the Cloudflare Worker  that handles interactions with Google Forms.
+description: Documentation for the entrypoints of the Google Forms Worker.
 ---
 
-# Google Forms Worker Entrypoints
+# Google Forms Worker Entrypoint
 
-The **Google Forms Worker** entrypoints allow the registration of Google Forms connections. These entrypoints interact with the API to perform secure operations, including setting up form integrations, verifying user submissions, and executing custom handlers.
+The **Google Forms Worker** provides functionality for interacting with Google Forms. This worker enables registration handling and validation processes, simplifying the integration of Google Forms with custom workflows.
 
 ---
 
-## **Entrypoint Overview**
+## **GoogleFormsWorker Entrypoint**
 
 ### **`openRegistration(fixedUrl, handler, handlerData)`**
-Creates a new registration for a Google Form, generating unique identifiers to securely track and validate the form’s connection.
 
-#### **Parameters**:
-- **`fixedUrl`** *(Required)*:  
-  The base URL for validating the form’s responses.  
-  Example: `"esn/recruitment"`
-- **`handler`** *(Required)*:  
-  The handler to process form responses (e.g., `"esn-recruitment"`).
-- **`handlerData`** *(Optional)*:  
-  Additional data for the handler.
+Registers a new form interaction session and generates unique identifiers for tracking the session. The function stores the registration data and returns an identifier for the created session.
 
-#### **Behavior**:
-1. Generates a unique registration ID and key.
-2. Stores registration data in the `GOOGLE_FORMS` KV namespace with a TTL of 1 hour.
-3. Returns the unique registration ID.
+**Parameters**:
+- `fixedUrl`: The fixed URL associated with the form. This URL serves as a reference for validating interactions.
+- `handler`: The name of the handler responsible for processing responses.
+- `handlerData`: Additional data required by the handler for processing responses.
 
-#### **Code Reference**:
-```javascript
-async openRegistration(fixedUrl, handler, handlerData) {
-  const id = await this.env.UTILS.generateID(25);
-  const key = await this.env.UTILS.generateID(50);
-  await this.env.GOOGLE_FORMS.put(`registrationKey-${key}`, id, { expirationTtl: 3600 });
-  await this.env.GOOGLE_FORMS.put(`registration-${id}`, JSON.stringify({ fixedUrl, handler, handlerData, key }), { expirationTtl: 3600 });
-  return id;
-}
+**Returns**:
+A unique session ID (`id`) as a string.
+
+**Details**:
+- This function generates two unique keys using the **Utils Worker**'s `generateID` function:
+  - A 25-character session ID.
+  - A 50-character registration key.
+- Both keys are stored in the environment's **Google Forms** KV namespace with an expiration time of one hour (3600 seconds).
+- Registration details, including the `fixedUrl`, `handler`, `handlerData`, and `key`, are also stored in the KV namespace with the same expiration time.
+
+**Usage Example**:
+
+```javascript showLineNumbers
+const sessionID = await GoogleFormsWorker.openRegistration(
+    'esn/recruitment', // fixedUrl
+    'esn-recruitment', // handler
+    { someKey: 'someValue' } // handlerData
+);
+return Response.redirect(`https://workers.tablerus.es/googleforms/${sessionID}`, 302);
 ```
 
-#### **Usage Example**:
-```javascript
-const registrationId = await GoogleFormsWorker.openRegistration("esn/recruitment", "esn-recruitment", { id: "test" });
-return Response.redirect(`https://workers.tablerus.es/googleforms/${registrationId}`);
-```
+**Behavior**:
+1. Generates a unique session ID and registration key.
+2. Stores registration data in the KV namespace.
+3. Returns the generated session ID for reference in subsequent operations.
+
+**Important Notes**:
+- The registration data is automatically removed after the expiration time (1 hour).
+- This function is intended for initiating form-based workflows and should be followed by further actions, such as validating or handling responses.

@@ -1,11 +1,18 @@
----
-sidebar_position: 1
----
+# Workers
 
-# Workers Introduction
+### [Email](./email)
+
+### [Actions](./actions)
+
+### [Auth](./auth)
+
+### [Google Forms](./googleforms)
+
+### [Utils](./utils)
+
+### [Scheduled](./scheduled)
 
 ---
 
 ## **Resources**
-- [tablerus.es](https://tablerus.es) website
 - [Cloudflare Workers Documentation](https://developers.cloudflare.com/workers/)
